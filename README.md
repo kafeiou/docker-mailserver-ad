@@ -1,4 +1,4 @@
-# Docker-Postfix-AD
+# Docker-MailServer-AD
 
 🌐 **Language / 語言 / Ngôn ngữ**:  
 [English](README.md) | [繁體中文](README.zh-TW.md) | [简体中文](README.zh-CN.md) | [Tiếng Việt](README.vi.md)
@@ -8,9 +8,9 @@
 ## 📌 Introduction
 A full-featured Postfix Mail Server container with Active Directory (LDAP) backend authentication, Rspamd spam filtering, ClamAV antivirus, OpenDKIM signing, and Quota support.
 
-- **GitHub Repository**: [https://github.com/WilliamFromTW/docker-Postfix-AD](https://github.com/WilliamFromTW/docker-Postfix-AD)
-- **Online Config Generator**: [https://williamfromtw.github.io/docker-Postfix-AD/genLaunchCommand.html](https://williamfromtw.github.io/docker-Postfix-AD/genLaunchCommand.html)
-- **System Architecture & Technical Guide**: [ARCHITECTURE.md](ARCHITECTURE.md) | [Online Interactive Guide](https://williamfromtw.github.io/docker-Postfix-AD/architecture.html)
+- **GitHub Repository**: [https://github.com/kafeiou/docker-mailserver-ad](https://github.com/kafeiou/docker-mailserver-ad)
+- **Online Config Generator**: [https://kafeiou.github.io/docker-mailserver-ad/genLaunchCommand.html](https://kafeiou.github.io/docker-mailserver-ad/genLaunchCommand.html)
+- **System Architecture & Technical Guide**: [ARCHITECTURE.md](ARCHITECTURE.md) | [Online Interactive Guide](https://kafeiou.github.io/docker-mailserver-ad/architecture.html)
 
 ---
 
@@ -47,7 +47,7 @@ A full-featured Postfix Mail Server container with Active Directory (LDAP) backe
 ## ⚙️ Quick Start
 
 ### Option 1: Online Generator (Recommended)
-Visit the [Online Config Generator](https://williamfromtw.github.io/docker-Postfix-AD/genLaunchCommand.html) to interactively generate your `docker-compose.yaml` or `docker run` command with a single click.
+Visit the [Online Config Generator](https://kafeiou.github.io/docker-mailserver-ad/genLaunchCommand.html) to interactively generate your `docker-compose.yaml` or `docker run` command with a single click.
 
 ---
 
@@ -237,7 +237,7 @@ For deeper understanding of Active Directory integration details, mail security 
 
 ## 🛠️ Build Image Locally
 ```bash
-git clone https://github.com/WilliamFromTW/docker-Postfix-AD.git
-cd docker-Postfix-AD
+git clone https://github.com/kafeiou/docker-mailserver-ad.git
+cd docker-mailserver-ad
 docker build -t inmethod/docker-postfix-ad:latest --no-cache .
 ```

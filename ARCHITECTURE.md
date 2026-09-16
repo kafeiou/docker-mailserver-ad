@@ -6,11 +6,11 @@
 ---
 
 ## 📌 Introduction
-This document provides an in-depth technical overview of the **docker-Postfix-AD** container architecture. It explains how Postfix, Dovecot, Active Directory (LDAP), Rspamd, ClamAV, OpenDKIM, and SSL/TLS certificates interact.
+This document provides an in-depth technical overview of the **docker-mailserver-ad** container architecture. It explains how Postfix, Dovecot, Active Directory (LDAP), Rspamd, ClamAV, OpenDKIM, and SSL/TLS certificates interact.
 
 - **Main README**: [README.md](README.md)
-- **Online Config Generator**: [https://williamfromtw.github.io/docker-Postfix-AD/genLaunchCommand.html](https://williamfromtw.github.io/docker-Postfix-AD/genLaunchCommand.html)
-- **Online Interactive Architecture Viewer**: [https://williamfromtw.github.io/docker-Postfix-AD/architecture.html](https://williamfromtw.github.io/docker-Postfix-AD/architecture.html)
+- **Online Config Generator**: [https://kafeiou.github.io/docker-mailserver-ad/genLaunchCommand.html](https://kafeiou.github.io/docker-mailserver-ad/genLaunchCommand.html)
+- **Online Interactive Architecture Viewer**: [https://kafeiou.github.io/docker-mailserver-ad/architecture.html](https://kafeiou.github.io/docker-mailserver-ad/architecture.html)
 
 ---
 

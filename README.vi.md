@@ -1,4 +1,4 @@
-# Docker-Postfix-AD
+# Docker-MailServer-AD
 
 🌐 **Language / 語言 / Ngôn ngữ**:  
 [English](README.md) | [繁體中文](README.zh-TW.md) | [简体中文](README.zh-CN.md) | [Tiếng Việt](README.vi.md)
@@ -8,9 +8,9 @@
 ## 📌 Giới thiệu dự án
 Đây là container Docker máy chủ Email Postfix hoàn chỉnh và tích hợp sẵn, hỗ trợ xác thực tài khoản qua Microsoft Active Directory (LDAP), bộ lọc thư rác Rspamd, quét virus ClamAV, chữ ký số OpenDKIM và quản lý hạn ngạch hòm thư (Quota).
 
-- **Kho lưu trữ GitHub**: [https://github.com/WilliamFromTW/docker-Postfix-AD](https://github.com/WilliamFromTW/docker-Postfix-AD)
-- **Công cụ tạo cấu hình trực tuyến**: [https://williamfromtw.github.io/docker-Postfix-AD/genLaunchCommand.html](https://williamfromtw.github.io/docker-Postfix-AD/genLaunchCommand.html)
-- **Kiến trúc hệ thống & Hướng dẫn kỹ thuật**: [ARCHITECTURE.vi.md](ARCHITECTURE.vi.md) | [Xem biểu đồ tương tác trực tuyến](https://williamfromtw.github.io/docker-Postfix-AD/architecture.html)
+- **Kho lưu trữ GitHub**: [https://github.com/kafeiou/docker-mailserver-ad](https://github.com/kafeiou/docker-mailserver-ad)
+- **Công cụ tạo cấu hình trực tuyến**: [https://kafeiou.github.io/docker-mailserver-ad/genLaunchCommand.html](https://kafeiou.github.io/docker-mailserver-ad/genLaunchCommand.html)
+- **Kiến trúc hệ thống & Hướng dẫn kỹ thuật**: [ARCHITECTURE.vi.md](ARCHITECTURE.vi.md) | [Xem biểu đồ tương tác trực tuyến](https://kafeiou.github.io/docker-mailserver-ad/architecture.html)
 
 ---
 
@@ -47,7 +47,7 @@
 ## ⚙️ Bắt đầu nhanh
 
 ### Cách 1: Sử dụng công cụ tạo trực tuyến (Khuyến nghị)
-Truy cập [Công cụ tạo cấu hình trực tuyến (Online Generator)](https://williamfromtw.github.io/docker-Postfix-AD/genLaunchCommand.html) để tạo tệp `docker-compose.yaml` hoặc lệnh `docker run` nhanh chóng chỉ với một cú nhấp chuột.
+Truy cập [Công cụ tạo cấu hình trực tuyến (Online Generator)](https://kafeiou.github.io/docker-mailserver-ad/genLaunchCommand.html) để tạo tệp `docker-compose.yaml` hoặc lệnh `docker run` nhanh chóng chỉ với một cú nhấp chuột.
 
 ---
 
@@ -237,7 +237,7 @@ docker run --name mailserver \
 
 ## 🛠️ Tự Build Image tại máy cục bộ
 ```bash
-git clone https://github.com/WilliamFromTW/docker-Postfix-AD.git
-cd docker-Postfix-AD
+git clone https://github.com/kafeiou/docker-mailserver-ad.git
+cd docker-mailserver-ad
 docker build -t inmethod/docker-postfix-ad:latest --no-cache .
 ```

@@ -6,11 +6,11 @@
 ---
 
 ## 📌 簡介
-本文件提供 **docker-Postfix-AD** 容器技術架構的深度剖析。詳細說明 Postfix、Dovecot、微軟 Active Directory (LDAP)、Rspamd、ClamAV、OpenDKIM 以及 SSL/TLS 憑證體系之間的協同運作流程。
+本文件提供 **docker-mailserver-ad** 容器技術架構的深度剖析。詳細說明 Postfix、Dovecot、微軟 Active Directory (LDAP)、Rspamd、ClamAV、OpenDKIM 以及 SSL/TLS 憑證體系之間的協同運作流程。
 
 - **專案首頁**: [README.zh-TW.md](README.zh-TW.md)
-- **線上設定產生器**: [https://williamfromtw.github.io/docker-Postfix-AD/genLaunchCommand.html](https://williamfromtw.github.io/docker-Postfix-AD/genLaunchCommand.html)
-- **線上互動架構圖網頁**: [https://williamfromtw.github.io/docker-Postfix-AD/architecture.html](https://williamfromtw.github.io/docker-Postfix-AD/architecture.html)
+- **線上設定產生器**: [https://kafeiou.github.io/docker-mailserver-ad/genLaunchCommand.html](https://kafeiou.github.io/docker-mailserver-ad/genLaunchCommand.html)
+- **線上互動架構圖網頁**: [https://kafeiou.github.io/docker-mailserver-ad/architecture.html](https://kafeiou.github.io/docker-mailserver-ad/architecture.html)
 
 ---
 

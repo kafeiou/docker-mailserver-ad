@@ -6,11 +6,11 @@
 ---
 
 ## 📌 Giới thiệu
-Tài liệu này cung cấp cái nhìn kỹ thuật chuyên sâu về kiến trúc container **docker-Postfix-AD**. Giải thích chi tiết cách Postfix, Dovecot, Microsoft Active Directory (LDAP), Rspamd, ClamAV, OpenDKIM và hệ thống chứng chỉ SSL/TLS phối hợp hoạt động.
+Tài liệu này cung cấp cái nhìn kỹ thuật chuyên sâu về kiến trúc container **docker-mailserver-ad**. Giải thích chi tiết cách Postfix, Dovecot, Microsoft Active Directory (LDAP), Rspamd, ClamAV, OpenDKIM và hệ thống chứng chỉ SSL/TLS phối hợp hoạt động.
 
 - **Trang chủ README**: [README.vi.md](README.vi.md)
-- **Công cụ tạo cấu hình trực tuyến**: [https://williamfromtw.github.io/docker-Postfix-AD/genLaunchCommand.html](https://williamfromtw.github.io/docker-Postfix-AD/genLaunchCommand.html)
-- **Trang xem kiến trúc tương tác trực tuyến**: [https://williamfromtw.github.io/docker-Postfix-AD/architecture.html](https://williamfromtw.github.io/docker-Postfix-AD/architecture.html)
+- **Công cụ tạo cấu hình trực tuyến**: [https://kafeiou.github.io/docker-mailserver-ad/genLaunchCommand.html](https://kafeiou.github.io/docker-mailserver-ad/genLaunchCommand.html)
+- **Trang xem kiến trúc tương tác trực tuyến**: [https://kafeiou.github.io/docker-mailserver-ad/architecture.html](https://kafeiou.github.io/docker-mailserver-ad/architecture.html)
 
 ---
 

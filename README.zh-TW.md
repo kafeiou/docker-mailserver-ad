@@ -1,4 +1,4 @@
-# Docker-Postfix-AD
+# Docker-MailServer-AD
 
 🌐 **Language / 語言 / Ngôn ngữ**:  
 [English](README.md) | [繁體中文](README.zh-TW.md) | [简体中文](README.zh-CN.md) | [Tiếng Việt](README.vi.md)
@@ -8,9 +8,9 @@
 ## 📌 專案簡介
 這是一個功能完整且經過整合的 Postfix 郵件伺服器 Docker 容器，具備 Microsoft Active Directory (LDAP) 帳號後端驗證、Rspamd 垃圾郵件過濾、ClamAV 病毒掃描、OpenDKIM 數位簽章以及信箱配額 (Quota) 管理支援。
 
-- **GitHub 專案庫**: [https://github.com/WilliamFromTW/docker-Postfix-AD](https://github.com/WilliamFromTW/docker-Postfix-AD)
-- **線上設定產生器**: [https://williamfromtw.github.io/docker-Postfix-AD/genLaunchCommand.html](https://williamfromtw.github.io/docker-Postfix-AD/genLaunchCommand.html)
-- **系統架構與維運指南**: [ARCHITECTURE.zh-TW.md](ARCHITECTURE.zh-TW.md) | [線上互動架構圖](https://williamfromtw.github.io/docker-Postfix-AD/architecture.html)
+- **GitHub 專案庫**: [https://github.com/kafeiou/docker-mailserver-ad](https://github.com/kafeiou/docker-mailserver-ad)
+- **線上設定產生器**: [https://kafeiou.github.io/docker-mailserver-ad/genLaunchCommand.html](https://kafeiou.github.io/docker-mailserver-ad/genLaunchCommand.html)
+- **系統架構與維運指南**: [ARCHITECTURE.zh-TW.md](ARCHITECTURE.zh-TW.md) | [線上互動架構圖](https://kafeiou.github.io/docker-mailserver-ad/architecture.html)
 
 ---
 
@@ -47,7 +47,7 @@
 ## ⚙️ 快速開始
 
 ### 方式一：使用線上產生器（強烈推薦）
-前往 [線上設定產生器 (Online Generator)](https://williamfromtw.github.io/docker-Postfix-AD/genLaunchCommand.html)，可於瀏覽器圖形化填寫並一鍵產出 `docker-compose.yaml` 或 `docker run` 指令。
+前往 [線上設定產生器 (Online Generator)](https://kafeiou.github.io/docker-mailserver-ad/genLaunchCommand.html)，可於瀏覽器圖形化填寫並一鍵產出 `docker-compose.yaml` 或 `docker run` 指令。
 
 ---
 
@@ -237,7 +237,7 @@ docker run --name mailserver \
 
 ## 🛠️ 本地建置映像檔
 ```bash
-git clone https://github.com/WilliamFromTW/docker-Postfix-AD.git
-cd docker-Postfix-AD
+git clone https://github.com/kafeiou/docker-mailserver-ad.git
+cd docker-mailserver-ad
 docker build -t inmethod/docker-postfix-ad:latest --no-cache .
 ```
