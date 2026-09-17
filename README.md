@@ -60,7 +60,7 @@ version: '3.8'
 
 services:
   mailserver:
-    image: inmethod/docker-postfix-ad:latest
+    image: kafeiou/docker-mailserver-ad:latest
     container_name: mailserver
     restart: always
     network_mode: host
@@ -215,7 +215,7 @@ docker run --name mailserver \
   -e OLLAMA_MODEL="qwen2.5:7b" \
   -e OLLAMA_TIMEOUT="180" \
   -d --restart always --net=host \
-  inmethod/docker-postfix-ad:latest
+  kafeiou/docker-mailserver-ad:latest
 ```
 
 ---
@@ -239,5 +239,5 @@ For deeper understanding of Active Directory integration details, mail security 
 ```bash
 git clone https://github.com/kafeiou/docker-mailserver-ad.git
 cd docker-mailserver-ad
-docker build -t inmethod/docker-postfix-ad:latest --no-cache .
+docker build -t kafeiou/docker-mailserver-ad:latest --no-cache .
 ```

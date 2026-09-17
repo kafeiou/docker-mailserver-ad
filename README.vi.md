@@ -60,7 +60,7 @@ version: '3.8'
 
 services:
   mailserver:
-    image: inmethod/docker-postfix-ad:latest
+    image: kafeiou/docker-mailserver-ad:latest
     container_name: mailserver
     restart: always
     network_mode: host
@@ -215,13 +215,13 @@ docker run --name mailserver \
   -e OLLAMA_MODEL="qwen2.5:7b" \
   -e OLLAMA_TIMEOUT="180" \
   -d --restart always --net=host \
-  inmethod/docker-postfix-ad:latest
+  kafeiou/docker-mailserver-ad:latest
 ```
 
 ---
 
 ## 🛡️ Hướng Dẫn Bảo Mật Rspamd & Web UI
-Để biết chi tiết về lọc thư rác Rspamd, quản trị Web UI (`http://<IP>:11334`, mật khẩu mặc định: `kafeiou.pw`), cách ly Zero-Bounce (`SPAM_EMAIL`), danh sách trắng/đen và quét tệp đính kèm nén, vui lòng xem **[Hướng dẫn Rspamd (RSPAMD.vi.md)](RSPAMD.vi.md)**.
+Để biết chi tiết về lọc thư rác Rspamd, quản trị Web UI (`http://<IP>:11334`, mật khẩu mặc định: `kafeiou.pw`), cách ly Zero-Bounce (`SPAM_EMAIL`), danh sách trắng/đen và quét tệp đính kèm nén, vui lòng xem **[Hướng dẫn Rspamd (RSPAMD.vi.md)](RSPAMD.vi.md)**。
 
 ---
 
@@ -239,5 +239,5 @@ docker run --name mailserver \
 ```bash
 git clone https://github.com/kafeiou/docker-mailserver-ad.git
 cd docker-mailserver-ad
-docker build -t inmethod/docker-postfix-ad:latest --no-cache .
+docker build -t kafeiou/docker-mailserver-ad:latest --no-cache .
 ```

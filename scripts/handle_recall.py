@@ -829,7 +829,7 @@ def build_status_report(
         <div style="max-width: 800px; margin: auto; border: 1px solid #e1e4e8; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
             <div style="background-color: #0366d6; color: white; padding: 18px 24px;">
                 <h2 style="margin: 0; font-size: 20px;">郵件收回狀態報告 / Message Recall Status Report</h2>
-                <div style="font-size: 13px; opacity: 0.9; margin-top: 4px;">Docker-Postfix-AD Two-Tier Recall System</div>
+                <div style="font-size: 13px; opacity: 0.9; margin-top: 4px;">Docker-MailServer-AD Two-Tier Recall System</div>
             </div>
             
             <div style="padding: 24px;">
