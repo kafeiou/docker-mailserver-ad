@@ -105,15 +105,32 @@ def get_configured_tz():
     # Natively use container's local timezone
     return datetime.now().astimezone().tzinfo
 
+def sanitize_ollama_host(raw_host):
+    """
+    Sanitizes OLLAMA_HOST string:
+    - Strips whitespace
+    - Strips all trailing slashes (preventing //api/chat or //api/tags double slashes)
+    - Preserves https:// or http:// exactly as given
+    - Preserves custom ports (or no port) exactly as given
+    - Only prepends http:// if no protocol scheme is present at all
+    """
+    if not raw_host:
+        return ""
+    host = str(raw_host).strip().rstrip("/")
+    if host and not re.match(r"^https?://", host, re.IGNORECASE):
+        host = "http://" + host
+    return host
+
 def check_ollama_health(host, timeout=3.0):
     """
     Performs an ultra-lightweight HTTP GET health check on Ollama's native endpoint:
-    GET http://<host>:11434/
+    GET http(s)://<host>[:port]/
     Returns True if 200 OK (body contains 'Ollama is running'), False otherwise.
     Fast-fails within 3 seconds to avoid blocking mail delivery when GPU host is down.
     """
     if not host:
         return False
+    host = sanitize_ollama_host(host)
     try:
         req = urllib.request.Request(f"{host}/", headers={"User-Agent": "Postfix-Autoreply/1.0"})
         with urllib.request.urlopen(req, timeout=timeout) as resp:
@@ -134,6 +151,7 @@ def get_ollama_active_model(host):
     """
     if not host:
         return ""
+    host = sanitize_ollama_host(host)
     if not check_ollama_health(host, timeout=3.0):
         return ""
     # Check currently running model (/api/ps)
@@ -217,6 +235,9 @@ def load_ollama_config():
                         conf["DEFAULT_LANG"] = item.split(b"=", 1)[1].decode("utf-8", errors="ignore").strip()
         except Exception:
             pass
+
+    # Sanitize and guardrail OLLAMA_HOST (strip trailing slashes, support http/https and any port)
+    conf["OLLAMA_HOST"] = sanitize_ollama_host(conf.get("OLLAMA_HOST", ""))
 
     # Do not set any hardcoded model default! If empty, discover from Ollama server
     if not conf["OLLAMA_MODEL"] and conf["OLLAMA_HOST"]:

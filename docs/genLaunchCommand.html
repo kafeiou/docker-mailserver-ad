@@ -439,6 +439,18 @@
         applyLanguage(lang);
       }
 
+      function sanitizeOllamaHost(rawHost) {
+        if (!rawHost) return "";
+        var host = rawHost.trim();
+        // 去除結尾所有斜線（如 http://host:11434/ 或 https://domain/ ➔ 去除結尾 /）
+        host = host.replace(/\/+$/, "");
+        // 若完全未包含協定前綴 (既非 http:// 也非 https://)，才預設補齊 http://
+        if (host && !/^https?:\/\//i.test(host)) {
+          host = "http://" + host;
+        }
+        return host;
+      }
+
       function genAllConfigs(shouldScroll) {
         if (typeof shouldScroll === "undefined") shouldScroll = true;
 
@@ -457,7 +469,10 @@
         var permitNetwork = $("#inputPermitNetwork").val().trim();
         var timeZone = $("#inputTimeZone").val().trim() || "Asia/Taipei";
         var enableLdaps = $("#inputEnableLdaps").is(":checked") ? "true" : "false";
-        var ollamaHost = $("#inputOllamaHost").val().trim();
+        var ollamaHost = sanitizeOllamaHost($("#inputOllamaHost").val());
+        if (ollamaHost) {
+          $("#inputOllamaHost").val(ollamaHost);
+        }
         var ollamaModel = $("#inputOllamaModel").val().trim();
         var ollamaTimeout = $("#inputOllamaTimeout").val().trim() || "60";
 
@@ -682,6 +697,12 @@
             $("#inputMailServerName").val("");
             $("#inputSpamEmail").val("");
           }
+        });
+
+        // Ollama Host 欄位防呆：失焦時自動修剪結尾斜線並相容 http/https 與任意 port
+        $("#inputOllamaHost").on("blur", function() {
+          var cleaned = sanitizeOllamaHost($(this).val());
+          $(this).val(cleaned);
         });
       });
     </script>

@@ -3,7 +3,7 @@ import sys
 import os
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "scripts"))
-from handle_autoreply import check_vacation_intent, detect_language
+from handle_autoreply import check_vacation_intent, detect_language, sanitize_ollama_host
 
 
 class TestAutoreplyGatekeeper(unittest.TestCase):
@@ -73,6 +73,66 @@ class TestAutoreplyGatekeeper(unittest.TestCase):
         self.assertEqual(detect_language("今天开始请假三天，有急事请联系电话"), "zh-CN")
         self.assertEqual(detect_language("I will be out of office until Friday"), "en")
         self.assertEqual(detect_language("Tôi xin nghỉ phép từ hôm nay"), "vi")
+
+
+class TestOllamaHostSanitizer(unittest.TestCase):
+    def test_strip_trailing_slashes(self):
+        """測試移除結尾斜線（含單斜線與多重斜線）"""
+        self.assertEqual(
+            sanitize_ollama_host("http://10.192.130.184:11434/"),
+            "http://10.192.130.184:11434"
+        )
+        self.assertEqual(
+            sanitize_ollama_host("http://10.192.130.184:11434///"),
+            "http://10.192.130.184:11434"
+        )
+
+    def test_preserve_https(self):
+        """測試完整保留 https:// 協定"""
+        self.assertEqual(
+            sanitize_ollama_host("https://ollama.example.com/"),
+            "https://ollama.example.com"
+        )
+        self.assertEqual(
+            sanitize_ollama_host("https://ollama.example.com:8443/"),
+            "https://ollama.example.com:8443"
+        )
+        self.assertEqual(
+            sanitize_ollama_host("https://10.192.130.184:11434/"),
+            "https://10.192.130.184:11434"
+        )
+
+    def test_support_custom_or_no_port(self):
+        """測試支援無 port 反向代理或自訂 port"""
+        self.assertEqual(
+            sanitize_ollama_host("http://ollama.corp/"),
+            "http://ollama.corp"
+        )
+        self.assertEqual(
+            sanitize_ollama_host("https://ollama.corp"),
+            "https://ollama.corp"
+        )
+        self.assertEqual(
+            sanitize_ollama_host("http://192.168.1.50:8080/"),
+            "http://192.168.1.50:8080"
+        )
+
+    def test_missing_protocol_defaults_to_http(self):
+        """測試未帶 http/https 協定時自動補齊 http://"""
+        self.assertEqual(
+            sanitize_ollama_host("10.192.130.184:11434/"),
+            "http://10.192.130.184:11434"
+        )
+        self.assertEqual(
+            sanitize_ollama_host("ollama.internal/"),
+            "http://ollama.internal"
+        )
+
+    def test_empty_or_whitespace(self):
+        """測試空值與純空白"""
+        self.assertEqual(sanitize_ollama_host(""), "")
+        self.assertEqual(sanitize_ollama_host(None), "")
+        self.assertEqual(sanitize_ollama_host("   "), "")
 
 
 if __name__ == "__main__":

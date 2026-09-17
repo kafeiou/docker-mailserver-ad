@@ -241,8 +241,17 @@ if [ -d "/etc/dovecot/sieve/global" ]; then
 fi
 
 # 導出 Ollama 與時區設定供 Sieve 外部腳本讀取（Dovecot sieve_extprograms 預設隔離環境變數）
+# 防呆清理：修剪結尾多餘斜線與前後空白，保留 http://、https:// 與自訂 port
+OLLAMA_HOST_CLEAN=""
+if [ -n "${OLLAMA_HOST}" ]; then
+  OLLAMA_HOST_CLEAN="$(echo "${OLLAMA_HOST}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' -e 's:/*$::')"
+  if ! echo "${OLLAMA_HOST_CLEAN}" | grep -qiE '^https?://'; then
+    OLLAMA_HOST_CLEAN="http://${OLLAMA_HOST_CLEAN}"
+  fi
+fi
+
 cat << EOF > /etc/dovecot/ollama.env
-OLLAMA_HOST="${OLLAMA_HOST}"
+OLLAMA_HOST="${OLLAMA_HOST_CLEAN}"
 OLLAMA_MODEL="${OLLAMA_MODEL}"
 OLLAMA_TIMEOUT="${OLLAMA_TIMEOUT:-20}"
 DEFAULT_LANG="${DEFAULT_LANG}"
