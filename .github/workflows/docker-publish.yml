@@ -30,4 +30,4 @@ jobs:
           context: .
           push: true
           # 建議同時保留專屬分支標籤與最新的 latest 標籤
-          tags: inmethod/docker-postfix-ad:latest
+          tags: kafeiou/docker-mailserver-ad:latest
